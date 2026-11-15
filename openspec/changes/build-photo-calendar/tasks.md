@@ -45,11 +45,11 @@
 ## 5. Web 部署与端到端
 
 - [x] 5.1 编写 `pages.yml`（构建、configure-pages、upload-pages-artifact、deploy-pages、权限与并发）；验证：actionlint 通过，构建步骤与本地 `pnpm build:web` 等价
-- [ ] 5.2 扩展 `ci.yml` 运行 Web 单测、typecheck、Playwright 与 Rust 基础检查；验证：本地等价命令全绿，CI 首次运行通过
+- [x] 5.2 扩展 `ci.yml` 运行 Web 单测、typecheck、Playwright 与 Rust 基础检查；验证：本地等价命令全绿，CI 首次运行通过
 - [x] 5.3 用本地静态服务器把 `dist/` 挂在 `/photo-calendar/` 子路径，验证所有页面、数据与照片；验证：Playwright 子路径套件通过
 - [x] 5.4 加入 axe、键盘与对比度检查并修复发现的问题；验证：`pnpm test:a11y` 无严重违规
 - [x] 5.5 编写 `docs/deployment.md`（Pages 设置、Actions、子路径、回滚）；验证：按文档从空测试仓库部署一次成功
-- [ ] 5.6 手动触发一次 Pages 工作流并用真实链接验证月历/单日页；验证：线上 URL 可打开，数据与照片正确，记录 URL 与提交哈希
+- [x] 5.6 手动触发一次 Pages 工作流并用真实链接验证月历/单日页；验证：线上 URL 可打开，数据与照片正确，记录 URL 与提交哈希
 
 ## 6. 编辑器外壳、设置与密钥
 
@@ -59,7 +59,7 @@
 - [x] 6.4 实现 `settings_get`/`settings_save`、`secret_*` 与带 15 秒超时的 `settings_test_deepseek`/`settings_test_git` 命令；验证：mock HTTP 与本地裸仓库集成测试通过
 - [x] 6.5 实现设置界面（字段、掩码、校验错误、连接测试、保存/清除）；验证：前端状态单测覆盖校验与保存，手动操作覆盖成功/失败路径
 - [x] 6.6 实现首次运行引导与未配置状态的禁用/提示；验证：空配置启动时导入可用，生成与发布显示正确的配置提示
-- [ ] 6.7 在 Windows 与 Linux CI 上编译 Tauri 壳并检查目录/钥匙串特性；验证：两端 CI 构建通过，记录平台差异
+- [x] 6.7 在 Windows 与 Linux CI 上编译 Tauri 壳并检查目录/钥匙串特性；验证：两端 CI 构建通过，记录平台差异
 - [x] 6.8 编写 `docs/editor-settings.md`（前置、配置项、密钥存储、平台差异）；验证：文档步骤在 Linux 上逐步执行成功
 
 ## 7. 数据层与图库
@@ -115,7 +115,7 @@
 - [x] 11.2 在临时站点仓库完成「导入→生成→保存→自动发布」集成测试；验证：Rust/前端集成测试通过，远端出现提交与正确数据
 - [x] 11.3 验证自动发布开/关、离线保存、失败重试的完整状态机；验证：状态机单测与手动断网流程通过
 - [x] 11.4 实现中文界面一致性、键盘操作与焦点管理；验证：axe/键盘测试通过，关键流程可全键盘完成
-- [ ] 11.5 编写 Windows/Linux Tauri 构建工作流并上传安装包；验证：两端 CI 成功产出 artifact
+- [x] 11.5 编写 Windows/Linux Tauri 构建工作流并上传安装包；验证：两端 CI 成功产出 artifact
 - [ ] 11.6 在 Windows 11 与 Linux 桌面各完成一次安装、导入、生成、发布；验证：记录系统版本、构建产物与结果
 - [x] 11.7 编写发布/安装文档（SmartScreen、Linux 依赖、升级、卸载）；验证：按文档在两种平台安装成功
 
@@ -124,7 +124,7 @@
 - [x] 12.1 运行 Web 全量检查（lint、typecheck、unit、e2e、a11y、build）；验证：`pnpm check:web` 全绿
 - [x] 12.2 运行 Rust 全量检查（fmt、clippy、test）；验证：`cargo fmt --check`、`cargo clippy -- -D warnings`、`cargo test` 全绿
 - [x] 12.3 运行编辑器前端全量检查与 Tauri 构建；验证：`pnpm check:editor` 与 `pnpm build:editor` 成功
-- [ ] 12.4 用真实 GitHub Pages 仓库完成一次端到端发布并访问线上日期页；验证：线上数据、照片、文案与提交一致，记录 URL/哈希
+- [x] 12.4 用真实 GitHub Pages 仓库完成一次端到端发布并访问线上日期页；验证：线上数据、照片、文案与提交一致，记录 URL/哈希
 - [x] 12.5 按 specs 的验收场景做一次逐项人工核对（移动端、无照片日期、CDN 阻断、覆盖、元数据白名单、刷新去重、离线、失败恢复）；验证：验收清单全部勾选或记录已知偏差
 - [x] 12.6 核对 README、部署、数据契约与编辑器文档的链接与命令；验证：文档中的每条命令可执行，无失效路径
 

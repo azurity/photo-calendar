@@ -5,6 +5,8 @@
 项目包含两个部分：
 
 - **展示端** `apps/web`：纯静态的月历页与单日页，可部署到 GitHub Pages，不依赖前端框架与自建服务端。
+
+线上示例：<https://azurity.run/photo-calendar/>（2026-11-08 有一张验证用示例图）
 - **编辑器** `apps/editor`：Tauri 2 跨平台桌面应用，导入照片、解析 EXIF、调用 DeepSeek 生成文案，并通过 Git 发布到站点仓库。
 
 ## 目录

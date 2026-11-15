@@ -1,6 +1,6 @@
 # 验收记录
 
-日期：2026-11-16（Asia/Shanghai）。本记录对应 `build-photo-calendar` 的规格场景；外部环境项明确标注为未执行。
+日期：2026-11-16（Asia/Shanghai）。本记录对应 `build-photo-calendar` 的规格场景；真实 GitHub Pages 与两端 CI 已执行。
 
 | 验收项 | 结果 | 证据/说明 |
 | --- | --- | --- |
@@ -19,18 +19,21 @@
 | 批量同日冲突 | 通过 | Rust `previews_batch_conflicts_and_existing_entries` |
 | 导入→保存→Git 发布 | 通过 | Rust 临时裸仓库集成测试（文案使用固定文本，未调用真实 DeepSeek） |
 | 文案刷新去重、401/429、重复三次 | 通过 | `wiremock` 测试 |
-| 海报式发布状态与失败恢复 | 通过 | Rust Git 分叉/脏工作区/推送错误测试；真实 Pages 未执行 |
+| 海报式发布状态与失败恢复 | 通过 | Rust Git 分叉/脏工作区/推送错误测试；真实 Pages 部署成功 |
+| CI 首次运行 | 通过 | run `43740567219`：Web lint/typecheck/单测/E2E 与 Rust fmt/clippy/test 全绿 |
+| 真实 GitHub Pages | 通过 | <https://azurity.run/photo-calendar/>，部署 run `43740567201`，提交 `298a7f8`（内容）/`26ae995`（代码） |
+| 线上照片日期 | 通过 | <https://azurity.run/photo-calendar/day.html?date=2026-11-08>：标题、文案、1600×1067 主图与 OG image 正确 |
+| Windows/Linux 编辑器构建 | 通过 | run `43740572424`：Windows `.msi`/`setup.exe`，Linux `.deb`/`.rpm`/`.AppImage` 均上传 artifact |
 | 编辑器设置/图库/导入/详情/发布 UI | 通过 | Vitest + jsdom 的 17 个 UI 场景，覆盖校验、筛选、冲突、生成、删除、发布失败与并发点击 |
 | 编辑器 axe/键盘 | 通过 | axe 主视图无 serious/critical 违规；导航按钮可聚焦 |
-
 | 离线导入/手动文案 | 代码路径已实现，未在真实断网环境执行 | 导入与保存不依赖网络；生成/发布会提示配置或网络错误 |
-| 真实 GitHub Pages 部署 | 未执行 | 需要用户 GitHub 仓库与 Actions 运行 |
-| Windows 安装与发布 | 未执行 | 需要 Windows 11 环境 |
-| Linux 安装包 | 通过（构建） | 生成 `.deb`/`.rpm`；未做系统级安装冒烟 |
+| Windows 安装与发布 | 未执行 | 需要真实 Windows 11 桌面与用户 DeepSeek Key |
+| Linux 安装包 | 通过（构建） | 生成 `.deb`/`.rpm`/`.AppImage`；未做系统级安装冒烟 |
 
 ## 已知偏差
 
-1. 真实 GitHub Pages、Windows 安装、真实断网环境未在当前沙箱执行；代码、工作流与本地替代验证已完成。
-2. 社交平台抓取 Open Graph 元数据仍受纯静态站限制，客户端更新 meta 只能尽力而为。
-3. 首版不支持 HEIC/RAW。
-4. `pnpm install` 在只读 HOME 的沙箱中需使用 `npx pnpm@9.15.9 install` 或可写 store；`pnpm dev:editor` 已通过仓库内包装脚本适配此环境。
+1. Windows 11 安装、真实 DeepSeek Key 生成与真实断网环境未在当前沙箱执行；Linux 侧已本地启动，GitHub Actions 已完成两端构建。
+2. 为验证线上照片渲染，仓库当前包含一张生成的渐变示例图（2026-11-08），可在编辑器中删除后重新发布。
+3. 社交平台抓取 Open Graph 元数据仍受纯静态站限制，客户端更新 meta 只能尽力而为。
+4. 首版不支持 HEIC/RAW。
+5. `pnpm install` 在只读 HOME 的沙箱中需使用 `npx pnpm@9.15.9 install` 或可写 store；`pnpm dev:editor` 已通过仓库内包装脚本适配此环境。

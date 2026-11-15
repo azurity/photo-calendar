@@ -7,6 +7,15 @@
 3. 确认仓库允许 Actions 运行；`pages.yml` 需要 `pages: write` 与 `id-token: write` 权限，工作流已声明。
 4. 推送后 Actions 会运行 **Deploy web to GitHub Pages**：安装依赖、构建 `packages/shared` 与 `apps/web`、上传 `apps/web/dist`、部署。
 
+本仓库已部署并验证：
+
+```text
+https://azurity.run/photo-calendar/
+https://azurity.run/photo-calendar/day.html?date=2026-11-08
+```
+
+部署 workflow：`43740567201`；内容提交 `298a7f8`，代码提交 `26ae995`。账户配置了自定义域名，因此 `azurity.github.io/photo-calendar/` 会 301 到该地址。
+
 站点地址通常是：
 
 ```text
