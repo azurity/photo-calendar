@@ -27,7 +27,13 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.png"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
     "shortDescription": "为照片日历添加照片、生成文案并发布到 GitHub Pages",
     "longDescription": "照片日历的跨平台编辑器。导入照片、解析 EXIF、调用 DeepSeek 生成文案，并通过 Git 发布到站点仓库。"
   }
