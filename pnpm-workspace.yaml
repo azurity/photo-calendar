@@ -1,0 +1,6 @@
+packages:
+  - apps/web
+  - apps/editor
+  - packages/shared
+
+verifyDepsBeforeRun: false

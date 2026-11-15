@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-15T10:00:00Z",
+  "entries": [
+    {
+      "date": "2026-11-08",
+      "photo": "data/photos/2026-11-08-a1b2c3d4.webp",
+      "thumbnail": "data/photos/thumbs/2026-11-08-a1b2c3d4.webp",
+      "caption": "",
+      "createdAt": "2026-11-15T09:50:00Z",
+      "updatedAt": "2026-11-15T09:55:00Z"
+    }
+  ]
+}

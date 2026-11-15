@@ -1,0 +1,40 @@
+{
+  "name": "photo-calendar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @photo-calendar/web dev",
+    "build:web": "pnpm --filter @photo-calendar/shared build && pnpm --filter @photo-calendar/web build",
+    "preview:web": "pnpm --filter @photo-calendar/web preview",
+    "test:web": "pnpm --filter @photo-calendar/web test",
+    "test:e2e": "pnpm --filter @photo-calendar/web test:e2e",
+    "test:a11y": "pnpm --filter @photo-calendar/web test:a11y",
+    "check:web": "pnpm --filter @photo-calendar/web check",
+    "dev:editor": "node scripts/dev-editor.mjs",
+    "build:editor": "node scripts/build-editor.mjs",
+    "test:editor": "pnpm --filter @photo-calendar/editor test",
+    "check:editor": "pnpm --filter @photo-calendar/editor check",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "typecheck": "pnpm -r typecheck",
+    "test:unit": "pnpm -r --if-present test",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test:unit"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.48.0",
+    "vitest": "^4.0.15"
+  }
+}

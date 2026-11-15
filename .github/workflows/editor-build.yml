@@ -1,0 +1,43 @@
+name: Build desktop editor
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: ubuntu-22.04
+            artifact: linux
+          - platform: windows-latest
+            artifact: windows
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.15.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install Tauri Linux dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+      - run: pnpm install --no-frozen-lockfile
+      - name: Build Tauri app
+        run: pnpm --filter @photo-calendar/editor tauri build
+      - name: Upload bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: photo-calendar-${{ matrix.artifact }}
+          path: apps/editor/src-tauri/target/release/bundle/**
+          if-no-files-found: error
