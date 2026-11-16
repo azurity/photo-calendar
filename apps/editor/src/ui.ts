@@ -44,7 +44,7 @@ export function showToast(message: string, kind: 'error' | 'success' | 'info' = 
 export function confirmAction(message: string): Promise<boolean> {
   return new Promise((resolve) => {
     const dialog = document.createElement('dialog');
-    dialog.className = 'confirm-dialog';
+    dialog.className = 'confirm-dialog lab-dialog';
     const text = h('p', { class: 'confirm-text' }, [message]);
     const cancel = h('button', { class: 'button button-ghost', type: 'button' }, ['取消']);
     const confirm = h('button', { class: 'button button-danger', type: 'button' }, ['确认']);

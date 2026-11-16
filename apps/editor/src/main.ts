@@ -59,8 +59,8 @@ function render(): void {
 }
 
 function renderShell(): HTMLElement {
-  const shell = h('div', { class: 'app-shell' });
-  const sidebar = h('aside', { class: 'sidebar' });
+  const shell = h('div', { class: 'app-shell film-shell' });
+  const sidebar = h('aside', { class: 'sidebar film-canister' });
   const brand = h('div', { class: 'brand-block' }, [
     h('span', { class: 'brand-dot', 'aria-hidden': 'true' }),
     h('div', {}, [h('strong', {}, ['照片日历']), h('span', { class: 'brand-sub' }, ['编辑器'])]),
@@ -94,7 +94,7 @@ function renderShell(): HTMLElement {
   sidebar.append(publish);
   shell.append(sidebar);
 
-  const main = h('main', { class: 'editor-main' });
+  const main = h('main', { class: 'editor-main darkroom-desk' });
   if (state.busy) {
     main.append(h('div', { class: 'busy-line', role: 'status' }, [`${state.busy}…`]));
   }
@@ -256,15 +256,15 @@ function renderGallery(): HTMLElement {
     return view;
   }
 
-  const grid = h('div', { class: 'photo-grid' });
-  for (const item of filtered) {
-    grid.append(renderPhotoCard(item));
+  const grid = h('div', { class: 'photo-grid contact-sheet' });
+  for (const [index, item] of filtered.entries()) {
+    grid.append(renderPhotoCard(item, index));
   }
   view.append(grid);
   return view;
 }
 
-function renderPhotoCard(item: EntryView): HTMLElement {
+function renderPhotoCard(item: EntryView, index: number): HTMLElement {
   const card = h('button', { class: 'photo-card', type: 'button' });
   const image = h('img', {
     class: 'photo-thumb',
@@ -274,6 +274,9 @@ function renderPhotoCard(item: EntryView): HTMLElement {
   });
   if (!item.thumbnailDataUrl) image.classList.add('image-missing');
   card.append(
+    h('span', { class: 'photo-frame-number', 'aria-hidden': 'true' }, [
+      `FRAME ${String(index + 1).padStart(2, '0')}`,
+    ]),
     image,
     h('span', { class: 'photo-card-date' }, [dateLabel(item.entry.date)]),
     h('span', { class: 'photo-card-caption' }, [item.entry.caption]),
@@ -301,7 +304,9 @@ function renderDetail(): HTMLElement {
   view.append(head);
 
   if (!detailImage) {
-    view.append(h('div', { class: 'detail-image loading-image' }, ['正在加载照片…']));
+    view.append(
+      h('div', { class: 'detail-image loading-image negative-frame' }, ['正在加载照片…']),
+    );
     void api
       .entryImage(entry.date)
       .then((image) => {
@@ -311,7 +316,7 @@ function renderDetail(): HTMLElement {
       .catch((error) => showToast(errorMessage(error), 'error'));
   } else {
     view.append(
-      h('div', { class: 'detail-image' }, [
+      h('div', { class: 'detail-image negative-frame' }, [
         h('img', { src: detailImage, alt: `${formatChineseDate(entry.date)}：${entry.caption}` }),
       ]),
     );
@@ -348,7 +353,7 @@ function renderDetail(): HTMLElement {
   );
   remove.addEventListener('click', () => void deleteEntry(entry));
   view.append(
-    h('div', { class: 'detail-form' }, [
+    h('div', { class: 'detail-form lab-card' }, [
       h('label', { class: 'field-label', for: 'detail-caption' }, ['这一天的文案']),
       caption,
       meta,
@@ -379,7 +384,7 @@ function renderImport(): HTMLElement {
   view.append(head);
 
   if (state.drafts.length === 0) {
-    const drop = h('div', { class: 'drop-zone' }, [
+    const drop = h('div', { class: 'drop-zone film-gate' }, [
       h('p', { class: 'drop-title' }, ['把照片拖到这里']),
       h('p', { class: 'muted' }, ['或者点击右上角选择照片。']),
     ]);
@@ -388,7 +393,7 @@ function renderImport(): HTMLElement {
     return view;
   }
 
-  const list = h('div', { class: 'draft-list' });
+  const list = h('div', { class: 'draft-list film-strip' });
   for (const draft of state.drafts) list.append(renderDraftCard(draft));
   view.append(list);
 
@@ -530,7 +535,7 @@ function renderSettings(): HTMLElement {
     return view;
   }
 
-  const form = h('form', { class: 'settings-form' });
+  const form = h('form', { class: 'settings-form lab-card' });
   const field = (label: string, input: HTMLElement, help?: string): HTMLElement =>
     h('div', { class: 'form-field' }, [
       h('label', { class: 'field-label', for: input.id }, [label]),
@@ -621,7 +626,7 @@ function renderSettings(): HTMLElement {
   });
   view.append(form);
 
-  const secretBox = h('div', { class: 'secret-box' }, [
+  const secretBox = h('div', { class: 'secret-box lab-card' }, [
     h('h2', { class: 'section-title' }, ['DeepSeek API Key']),
   ]);
   if (state.secret?.configured) {

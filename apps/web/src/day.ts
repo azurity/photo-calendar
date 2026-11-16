@@ -62,7 +62,13 @@ function renderPhotoDay(
     decoding: 'async',
     fetchpriority: 'high',
   });
-  const stage = h('div', { class: 'day-photo-stage' }, [image]);
+  const print = h('figure', { class: 'photo-paper' }, [
+    image,
+    h('span', { class: 'photo-paper-mark', 'aria-hidden': 'true' }, [
+      `${formatChineseDate(date)} · 照片日历`,
+    ]),
+  ]);
+  const stage = h('div', { class: 'day-photo-stage' }, [print]);
 
   const copyChildren: Array<Node | string> = [
     h('p', { class: 'day-eyebrow' }, ['一天一张 · 有照片的日子']),
@@ -73,7 +79,7 @@ function renderPhotoDay(
     h('p', { class: 'day-caption', id: captionId }, [entry.caption]),
   ];
   if (noticeNode) copyChildren.unshift(noticeNode);
-  const copy = h('div', { class: 'day-copy' }, copyChildren);
+  const copy = h('div', { class: 'day-copy paper-copy' }, copyChildren);
 
   element.append(stage, copy, navFor(date));
 
@@ -111,7 +117,7 @@ function renderFallbackDay(options: DayRenderOptions): DayRenderResult {
   ];
   const noticeNode = noticeElement(notice);
   if (noticeNode) copyChildren.unshift(noticeNode);
-  const copy = h('div', { class: 'fallback-copy' }, copyChildren);
+  const copy = h('div', { class: 'fallback-copy postcard-paper' }, copyChildren);
   element.append(copy, navFor(date));
 
   updatePageMeta({

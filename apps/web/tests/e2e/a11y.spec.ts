@@ -55,3 +55,24 @@ test('fallback day page has no serious accessibility violations', async ({ page 
   await page.goto('day.html?date=2026-11-09');
   await expectNoSeriousViolations(page);
 });
+
+test('dark month page has no serious accessibility violations', async ({ page }) => {
+  await routeData(page);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('index.html?month=2026-11');
+  await expectNoSeriousViolations(page);
+});
+
+test('dark photo day page has no serious accessibility violations', async ({ page }) => {
+  await routeData(page);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('day.html?date=2026-11-08');
+  await expectNoSeriousViolations(page);
+});
+
+test('dark fallback day page has no serious accessibility violations', async ({ page }) => {
+  await routeData(page, { version: 1, updatedAt: '2026-11-15T10:00:00Z', entries: [] });
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('day.html?date=2026-11-09');
+  await expectNoSeriousViolations(page);
+});

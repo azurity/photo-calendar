@@ -94,12 +94,14 @@ export function renderMonth(options: MonthRenderOptions): HTMLElement {
       };
       if (isToday) attributes['aria-current'] = 'date';
       const cell = h('a', attributes);
-      const number = h('span', { class: 'day-number' }, [String(parseIsoDate(date)?.day ?? '')]);
+      const number = h('span', { class: 'day-number day-stamp' }, [
+        String(parseIsoDate(date)?.day ?? ''),
+      ]);
       if (isToday)
         number.append(h('span', { class: 'today-label', 'aria-hidden': 'true' }, ['今天']));
       cell.append(number);
-
       if (entry) {
+        const print = h('span', { class: 'day-print' });
         const image = h('img', {
           class: 'day-thumb',
           src: resolveAssetPath(entry.thumbnail),
@@ -109,15 +111,17 @@ export function renderMonth(options: MonthRenderOptions): HTMLElement {
         });
         image.addEventListener('error', () => {
           image.remove();
+          print.remove();
           cell.classList.remove('has-photo');
           cell.classList.add('photo-missing');
         });
-        cell.append(image);
-        cell.append(
+        print.append(image);
+        print.append(
           h('span', { class: 'day-cell-caption', 'aria-hidden': 'true' }, [
             truncateText(entry.caption, 24),
           ]),
         );
+        cell.append(print);
       }
       grid.append(cell);
     }

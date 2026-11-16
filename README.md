@@ -112,4 +112,6 @@ pnpm --filter @photo-calendar/editor test
 - [Git 发布](docs/git-publishing.md)
 - [编辑器设置](docs/editor-settings.md)
 - [编辑器构建与安装](docs/editor-release.md)
+- [视觉语言](docs/visual-language.md)
+- [视觉验收记录](docs/visual-acceptance.md)
 - [验收记录](docs/acceptance.md)

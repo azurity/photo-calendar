@@ -30,6 +30,16 @@ seed     = hash32(`${date}|seed|v1`) || 1
 
 内容库版本常量在 `src/fallback/phrases.ts`（`FALLBACK_CONTENT_VERSION`）中；修改库内容或顺序会改变某一天的结果。`css-doodle` 通过 `https://unpkg.com/css-doodle@0.38.4/css-doodle.min.js` 固定版本加载；脚本不可用时 2 秒后启用 `.pattern-fallback` 纯 CSS 背景。
 
+
+## 视觉与主题
+
+展示端以「相纸 / 拍立得」为核心视觉语言。CSS token 集中在 `src/styles.css` 的 `:root`，深色值由 `@media (prefers-color-scheme: dark)` 覆盖；页面声明 `color-scheme: light dark`，不提供手动主题开关。月历与单日页使用同一组 `--paper`、`--ink`、`--frame`、`--frame-ink`、`--stage`、`--copy-bg`、`--tape` 等变量，因此系统主题切换时两页保持一致。
+
+- 月历日期格：`.day-cell` 内是 `span.day-print` 相纸，照片、日期章与短文案都在纸面内；无照片日期使用 `.day-print.is-empty` 的虚线纸卡。
+- 单日页：`.photo-paper` 承载不裁切的照片，`.day-copy` 是独立纸卡；无照片页使用 `.postcard-paper` 明信片卡。
+- `index.html` 与 `day.html` 各有两个 `meta[name="theme-color"]`，分别带 light/dark media，值对应 `--paper`。
+- 所有装饰用 CSS 渐变、边框、阴影和伪元素；旋转在移动端取消，装饰不拦截指针。`prefers-reduced-motion: reduce` 下过渡关闭。
+
 ## 命令
 
 ```bash

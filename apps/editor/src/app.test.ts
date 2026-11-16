@@ -211,6 +211,44 @@ describe('editor app', () => {
     expect(mocks.api.entryImage).toHaveBeenCalledWith('2026-11-08');
   });
 
+  it('uses film/contact-sheet hooks without polluting the accessible name', async () => {
+    await boot();
+    expect(document.querySelector('.photo-grid.contact-sheet')).not.toBeNull();
+    const frame = document.querySelector('.photo-frame-number');
+    expect(frame).not.toBeNull();
+    expect(frame?.getAttribute('aria-hidden')).toBe('true');
+    expect(document.querySelector('.photo-card')?.textContent).toContain('2026 年 11 月 8 日');
+    expect(document.querySelector('.film-canister')).not.toBeNull();
+    expect(document.querySelector('.darkroom-desk')).not.toBeNull();
+  });
+
+  it('uses film hooks in import, detail, settings and dialogs', async () => {
+    const { open } = await import('@tauri-apps/plugin-dialog');
+    (open as unknown as ReturnType<typeof vi.fn>).mockResolvedValue(['/tmp/new.jpg']);
+    await boot();
+    mocks.api.previewImport.mockResolvedValue([draft()]);
+    button('添加照片').click();
+    expect(document.querySelector('.drop-zone.film-gate')).not.toBeNull();
+    button('选择照片…').click();
+    await vi.waitFor(() => expect(mocks.api.previewImport).toHaveBeenCalled());
+    await flush();
+    expect(document.querySelector('.draft-list.film-strip')).not.toBeNull();
+
+    button('全部照片').click();
+    document.querySelector<HTMLButtonElement>('.photo-card')?.click();
+    await flush();
+    expect(document.querySelector('.detail-image.negative-frame')).not.toBeNull();
+    expect(document.querySelector('.detail-form.lab-card')).not.toBeNull();
+
+    button('设置').click();
+    expect(document.querySelector('.settings-form.lab-card')).not.toBeNull();
+    expect(document.querySelector('.secret-box.lab-card')).not.toBeNull();
+    button('清除 Key').click();
+    await flush();
+    expect(document.querySelector('.confirm-dialog.lab-dialog')).not.toBeNull();
+    document.querySelector<HTMLButtonElement>('.confirm-dialog .button-ghost')?.click();
+  });
+
   it('filters the gallery and shows an empty filtered state', async () => {
     await boot({ entries: [entryView(entry), entryView(secondEntry)] });
     expect(document.querySelectorAll('.photo-card')).toHaveLength(1);

@@ -45,6 +45,8 @@ describe('renderMonth', () => {
     document.body.append(view);
     expect(view.querySelectorAll('img')).toHaveLength(0);
     expect(view.querySelectorAll('a.day-cell')).toHaveLength(30);
+    expect(view.querySelectorAll('.day-print')).toHaveLength(0);
+    expect(view.querySelectorAll('.day-stamp')).toHaveLength(30);
   });
 
   it('handles a February starting mid-week', () => {
@@ -68,5 +70,6 @@ describe('renderMonth', () => {
     image?.dispatchEvent(new Event('error'));
     expect(view.querySelector('img')).toBeNull();
     expect(view.querySelector('.photo-missing')).not.toBeNull();
+    expect(view.querySelector('.day-print')).toBeNull();
   });
 });
