@@ -91,7 +91,7 @@ function renderShell(): HTMLElement {
 
   const publish = h('div', { class: 'publish-box' });
   publish.append(renderPublishBox());
-  sidebar.append(publish);
+  // sidebar.append(publish, createFilmEdge('vertical', 'sidebar-film-edge'));
   shell.append(sidebar);
 
   const main = h('main', { class: 'editor-main darkroom-desk' });
@@ -256,7 +256,10 @@ function renderGallery(): HTMLElement {
     return view;
   }
 
-  const grid = h('div', { class: 'photo-grid contact-sheet' });
+  const grid = h('div', { class: 'photo-grid contact-sheet' }, [
+    // createFilmEdge('horizontal', 'film-edge-top'),
+    // createFilmEdge('horizontal', 'film-edge-bottom'),
+  ]);
   for (const [index, item] of filtered.entries()) {
     grid.append(renderPhotoCard(item, index));
   }
@@ -274,12 +277,16 @@ function renderPhotoCard(item: EntryView, index: number): HTMLElement {
   });
   if (!item.thumbnailDataUrl) image.classList.add('image-missing');
   card.append(
+    // createFilmEdge('horizontal', 'film-edge-top'),
+    h('div', { class: 'film-edge' }),
     h('span', { class: 'photo-frame-number', 'aria-hidden': 'true' }, [
       `FRAME ${String(index + 1).padStart(2, '0')}`,
     ]),
     image,
     h('span', { class: 'photo-card-date' }, [dateLabel(item.entry.date)]),
-    h('span', { class: 'photo-card-caption' }, [item.entry.caption]),
+    // createFilmEdge('horizontal', 'film-edge-bottom'),
+    h('div', { class: 'film-edge' }),
+    // h('span', { class: 'photo-card-caption' }, [item.entry.caption]),
   );
   card.addEventListener('click', () => {
     state.selectedDate = item.entry.date;
@@ -393,7 +400,10 @@ function renderImport(): HTMLElement {
     return view;
   }
 
-  const list = h('div', { class: 'draft-list film-strip' });
+  const list = h('div', { class: 'draft-list film-strip' }, [
+    // createFilmEdge('horizontal', 'film-edge-top'),
+    // createFilmEdge('horizontal', 'film-edge-bottom'),
+  ]);
   for (const draft of state.drafts) list.append(renderDraftCard(draft));
   view.append(list);
 

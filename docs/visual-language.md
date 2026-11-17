@@ -66,6 +66,7 @@
 ### 展示性结构
 
 - `.app-shell.film-shell`、`.sidebar.film-canister`、`.editor-main.darkroom-desk`：暗房工作台与胶片罐侧栏。
+- 胶片齿孔由 `createFilmEdge()` 生成内联 SVG pattern（evenodd 挖空）；颗粒仅保留极弱的页面底层点纹，避免 `repeating-linear-gradient` 与 `mask-image` 的兼容问题。
 - `.photo-grid.contact-sheet`：接触印样网格；`.photo-card` 是暗房印样，缩略图不留白边，`.photo-frame-number`（`aria-hidden`）显示 `FRAME 01` 等帧号。
 - `.draft-list.film-strip`：导入胶片条；`.drop-zone.film-gate`：进片口。
 - `.detail-image.negative-frame`：放大底片框，尺寸由图片本身决定、无白边；`.detail-form.lab-card`、`.settings-form.lab-card`、`.secret-box.lab-card`：暗房记录卡。

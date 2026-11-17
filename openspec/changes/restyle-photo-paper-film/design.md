@@ -54,7 +54,8 @@
 ### 4. 编辑器采用暗房接触印样语言，CSS 为主、DOM 钩子为辅
 
 - `apps/editor/src/styles.css` 重建 token：`--bg` 暖黑、`--panel` 深棕、`--ink` 暖白、`--muted` 灰褐、`--accent` 琥珀、`--safelight` 暗红、`--film-edge` 齿孔色。侧栏像胶片罐/暗房墙面，主区像接触印样台。
-- 图库 `.photo-grid` 增加接触印样容器语义：CSS counter 生成帧号（`aria-hidden` 伪元素），日期与文案仍由现有 DOM 提供；卡片使用相纸边、底片孔和轻阴影，不改变 `button.photo-card` 的可点击语义。
+- 图库 `.photo-grid` 增加接触印样容器语义：CSS counter 生成帧号（`aria-hidden` 伪元素），日期与文案仍由现有 DOM 提供；卡片使用暗房边、底片孔和轻阴影，不改变 `button.photo-card` 的可点击语义。
+- 胶片齿孔不再使用 `repeating-linear-gradient` 或 `mask-image`：由 shared 的 `createFilmEdge()` 生成内联 SVG pattern，齿孔是 path 的 evenodd 挖空，透明孔洞直接露出下层背景；颗粒只保留极弱的页面底层 SVG 点纹。这样不依赖 WebKitGTK 的 mask 实现，孔洞连续且可主题化。
 - 导入 `.draft-list`/`.draft-card` 呈现为一条胶片条：上下齿孔用重复渐变，草稿预览像单帧印样；日期、冲突、文案、保存按钮保持原有顺序与可操作性。
 - 详情把 `.detail-image` 做成放大底片/印样框，`.detail-form` 像暗房记录卡；设置表单与 `secret-box` 像实验室标签页。仅增加 class/包裹，不改变字段、按钮与命令绑定。
 - 状态色：待发布用琥珀、错误用暗红、成功用低饱和绿；同时保留文字/图标/边框。暗房主题的正文与表单对比度按 WCAG AA 校验。

@@ -70,6 +70,11 @@
 - [x] 11.1 移除月历无照片日期的空白相纸与占位符，照片加载失败时同样只保留日期章；验证：Vitest/E2E 覆盖无照片、照片 404 与有照片日期，月历所有行仍等高
 - [x] 11.2 更新视觉语言/验收记录并重新生成月历截图；验证：截图无空白相纸，`pnpm check:web` 全绿
 
+## 12. 胶片纹理替换
+
+- [x] 12.1 用内联 SVG pattern（evenodd 圆角齿孔）替换编辑器的胶片齿孔重复渐变，用极弱 SVG 点纹替换深色背景条纹；验证：编辑器胶片齿孔与暗房背景不再含 `repeating-linear-gradient` 或 `mask-image`，Web 构建与编辑器构建通过
+- [x] 12.2 更新视觉文档并重新生成受影响的截图；验证：齿孔呈现圆角孔洞，`pnpm check:web`、`pnpm check:editor` 全绿
+
 ## Workflow follow-up
 
 - Archive the change after visual review and all tracked tasks are complete.

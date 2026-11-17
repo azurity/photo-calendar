@@ -220,6 +220,8 @@ describe('editor app', () => {
     expect(document.querySelector('.photo-card')?.textContent).toContain('2026 年 11 月 8 日');
     expect(document.querySelector('.film-canister')).not.toBeNull();
     expect(document.querySelector('.darkroom-desk')).not.toBeNull();
+    expect(document.querySelectorAll('.film-edge').length).toBeGreaterThan(0);
+    expect(document.querySelector('.film-edge')?.getAttribute('aria-hidden')).toBe('true');
   });
 
   it('uses film hooks in import, detail, settings and dialogs', async () => {

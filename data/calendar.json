@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15T17:12:00Z",
+  "updatedAt": "2026-11-17T15:02:37Z",
   "entries": [
     {
-      "date": "2026-11-08",
-      "photo": "data/photos/2026-11-08-3084b031.webp",
-      "thumbnail": "data/photos/thumbs/2026-11-08-3084b031.webp",
-      "caption": "风把下午吹得很慢，连影子都愿意多留一会儿。",
+      "date": "2026-11-15",
+      "photo": "data/photos/2026-11-15-ed702ec2.webp",
+      "thumbnail": "data/photos/thumbs/2026-11-15-ed702ec2.webp",
+      "caption": "银杏把整条小路染成金黄，树影里有人慢慢走远——挑个晴日出门吧，别辜负这一树好颜色。",
       "captionSource": "generated",
       "captionModel": "deepseek-flash",
       "captionPromptVersion": 1,
-      "captionUpdatedAt": "2026-11-15T17:12:00Z",
-      "capturedAt": "2026-11-08T17:30:00+08:00",
-      "createdAt": "2026-11-15T17:12:00Z",
-      "updatedAt": "2026-11-15T17:12:00Z"
+      "captionUpdatedAt": "2026-11-17T15:02:25Z",
+      "capturedAt": "2026-11-15T15:08:40+08:00",
+      "createdAt": "2026-11-17T15:02:25Z",
+      "updatedAt": "2026-11-17T15:02:25Z"
     }
   ]
 }
