@@ -18,3 +18,4 @@ pnpm-lock.yaml
 .xdg-cache/
 apps/editor/src-tauri/gen/
 apps/editor/src-tauri/target/
+data/calendar.json
