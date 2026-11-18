@@ -91,7 +91,7 @@ function renderShell(): HTMLElement {
 
   const publish = h('div', { class: 'publish-box' });
   publish.append(renderPublishBox());
-  // sidebar.append(publish, createFilmEdge('vertical', 'sidebar-film-edge'));
+  sidebar.append(publish);
   shell.append(sidebar);
 
   const main = h('main', { class: 'editor-main darkroom-desk' });

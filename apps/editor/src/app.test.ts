@@ -427,10 +427,36 @@ describe('editor app', () => {
         message: '有未发布的改动',
       },
     });
-    button('发布').click();
+    const publishBox = document.querySelector<HTMLElement>('.sidebar .publish-box');
+    expect(publishBox).not.toBeNull();
+    expect(publishBox?.textContent).toContain('发布到 GitHub');
+    const publishButton = publishBox?.querySelector<HTMLButtonElement>('button.button-primary');
+    expect(publishButton?.textContent).toContain('发布');
+    publishButton?.click();
     await flush();
     expect(mocks.api.gitPublish).toHaveBeenCalled();
     expect(document.querySelector('.toast')?.textContent).toContain('GitHub Pages');
+  });
+
+  it('shows a setup entry instead of publish when git is not configured', async () => {
+    await boot({
+      settings: {
+        ...settings,
+        git: { ...settings.git, remoteUrl: '' },
+      },
+    });
+    const publishBox = document.querySelector<HTMLElement>('.sidebar .publish-box');
+    expect(publishBox).not.toBeNull();
+    expect(publishBox?.textContent).toContain('尚未配置站点仓库');
+    expect(publishBox?.querySelector('button.button-primary')).toBeNull();
+    const setupButton = Array.from(publishBox?.querySelectorAll('button') ?? []).find((candidate) =>
+      candidate.textContent?.includes('去设置'),
+    );
+    expect(setupButton).not.toBeUndefined();
+    setupButton!.click();
+    await flush();
+    expect(document.querySelector('.settings-view')).not.toBeNull();
+    expect(mocks.api.gitPublish).not.toHaveBeenCalled();
   });
 
   it('keeps manual save available when caption generation is offline', async () => {
