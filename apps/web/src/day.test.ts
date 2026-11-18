@@ -37,6 +37,26 @@ describe('renderDay', () => {
     ).toContain('2026-11-08-a1b2c3d4.webp');
   });
 
+  it('places the date and caption inside the photo paper note', () => {
+    document.head.replaceChildren();
+    document.body.replaceChildren();
+    const result = renderDay({ date: '2026-11-08', manifest: manifest([entry]) });
+    document.body.append(result.element);
+
+    const figure = result.element.querySelector('figure.photo-paper');
+    const note = figure?.querySelector('figcaption.photo-paper-note');
+    expect(figure).not.toBeNull();
+    expect(note).not.toBeNull();
+    expect(figure?.querySelector('img.day-photo')).not.toBeNull();
+    expect(note?.querySelector('.day-caption')?.textContent).toContain('风把下午');
+    expect(note?.querySelector('h1#day-heading')).not.toBeNull();
+    expect(note?.querySelector('.day-weekday')?.textContent).toBe('星期日');
+    expect(result.element.querySelector('.day-copy')).toBeNull();
+    expect(result.element.querySelector('.photo-paper-mark')).toBeNull();
+    expect(result.element.getAttribute('aria-labelledby')).toBe('day-heading');
+    expect(result.element.querySelectorAll('#day-heading')).toHaveLength(1);
+  });
+
   it('renders fallback phrase and doodle when there is no photo', () => {
     document.head.replaceChildren();
     document.body.replaceChildren();
@@ -49,6 +69,9 @@ describe('renderDay', () => {
       8,
     );
     expect(result.element.querySelector('css-doodle')).not.toBeNull();
+    expect(result.element.querySelector('.fallback-copy')).not.toBeNull();
+    expect(result.element.querySelector('figure.photo-paper')).toBeNull();
+    expect(result.element.querySelector('.day-copy')).toBeNull();
     expect(document.head.querySelector('meta[property="og:image"]')).toBeNull();
   });
 

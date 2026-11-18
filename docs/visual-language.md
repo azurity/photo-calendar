@@ -23,21 +23,26 @@
 | `--accent` | `#a94e2f` | `#d98a5f` | 强调/今天 |
 | `--frame` | `#fffdf7` | `#efe6d6` | 相纸纸边 |
 | `--frame-ink` | `#3a332b` | `#302920` | 相纸上的文字 |
-| `--frame-muted` | `#7d7061` | `#7b6c5b` | 相纸上的日期/印章 |
+| `--frame-muted` | `#7d7061` | `#6a5c4d` | 相纸上的日期/印章 |
 | `--tape` | 暖半透明 | 暗琥珀 | 胶带 |
 | `--stage` | `#d7c8b4` | `#0f0c09` | 单日照片舞台 |
 | `--copy-bg` | 暖白半透明 | 深棕半透明 | 文案纸卡 |
+| `--marker-ink` | `#2f4152` | `#2f4152` | 相纸手写文案墨色 |
+| `--marker-bleed` | 半透明墨蓝 | 同浅色 | 渗墨阴影 |
+| `--marker-line` | 半透明墨蓝 | 同浅色 | 手绘下划线 |
 
 ### 展示性结构
 
 - 月历：有照片时 `.day-cell` 内是 `span.day-print`，包含 `.day-thumb` 与 `.day-cell-caption`；无照片日期不生成 `day-print`，只保留日期章和空白纸面。照片加载失败也移除 `day-print`。所有日期行使用固定等高轨道（桌面 118px、移动端 64px）。
-- 单日：`.photo-paper` 包住 `.day-photo`，`.day-copy.paper-copy` 是独立纸卡；无照片使用 `.postcard-paper`。
-- 装饰（胶带、纸边、阴影、日期章）由 CSS 渐变/伪元素实现；不进入可访问树、`pointer-events: none`。
+- 单日：`.photo-paper` 包住 `.day-photo` 与 `figcaption.photo-paper-note`；白边内依次是眉标、日期、星期与 `.day-caption` 手写文案。相纸宽度随照片收缩（`width: fit-content` + 白边 `contain: inline-size`，420–920px 上下限），白边由内容撑高；无照片使用 `.postcard-paper`。
+- 手写字体只在 `day.html` 引入（洪蕾行书按 `unicode-range` 分片，CDN 固定版本）。文案先以系统楷体/衬线回退渲染，`document.fonts.load()` 成功后才激活 `.photo-paper-note.handwriting-ready`；加载失败时保持回退字体。日期与星期始终使用印刷字体。
+- 装饰（胶带、纸边、阴影、日期章、手绘下划线）由 CSS 渐变/伪元素实现；不进入可访问树、`pointer-events: none`。
 - 移动端取消相纸旋转；320px 起日期格仍保持至少 44×44。
 
 ### 可访问性
 
 - 两套主题分别跑 axe；正文对比度按 WCAG AA。
+- 手写文案仍是真实文本，可选中、可被读屏读取；字体失败时回退到楷体/衬线，不隐藏文本。
 - 今天、无照片、照片缺失等状态同时使用文字/边框/形状，不只依赖颜色。
 - `prefers-reduced-motion: reduce` 下相纸悬停与主题过渡被关闭。
 

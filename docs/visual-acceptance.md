@@ -28,3 +28,22 @@ Web（1440×1000，Chrome）：
 - `pnpm check:web`（24 个 E2E）、`pnpm check:editor`（35 个测试）与 axe 检查通过。
 - 已知限制：编辑器截图为桌面根窗口截图，右侧可见桌面上未关闭的 Chrome 窗口；它不是应用内容。Tauri 应用本身为 1200×820。
 - 编辑器暗房主题为单一深色主题，不跟随系统浅色；这是本次设计的明确非目标。
+
+## 2026-11-18 单日相纸签名区
+
+对应 `restyle-day-caption-marker` 的人工视觉检查。Web（Chrome；桌面 1440×1000，移动端 375×667 与 320×667）：
+
+- `artifacts/visual/day-photo-light.png`
+- `artifacts/visual/day-photo-dark.png`
+- `artifacts/visual/day-caption-375-light.png`
+- `artifacts/visual/day-caption-1440-long.png`
+- `artifacts/visual/day-caption-375-long.png`
+- `artifacts/visual/day-caption-320-long.png`
+- `artifacts/visual/day-caption-375-dark-long.png`
+
+## 结果
+
+- 有照片单日页的日期、星期与完整文案位于相纸底部白边；相纸宽度随照片收缩，白边随文案行数增长，照片不裁切。
+- 洪蕾行书激活后呈现手写/马克笔字迹；字体加载成功前与 CDN 阻断时使用系统楷体/衬线回退，文案始终可见。
+- 320、375、1440px 下均无横向滚动；120 字文案在桌面与移动端正常换行、不裁切。
+- 浅色/深色下墨色与相纸纸边对比度满足 WCAG AA；`pnpm --filter @photo-calendar/web test:e2e`（29 个测试）与 `test:a11y`（6 个测试）通过。

@@ -46,6 +46,31 @@ function photoAlt(date: string, caption: string): string {
   return `${formatChineseDate(date)}的照片：${truncateText(caption, 60)}`;
 }
 
+const HANDWRITING_FONT = 'hongleixingshu';
+
+function waitForHandwritingStylesheet(): Promise<boolean> {
+  const link = document.querySelector<HTMLLinkElement>('#handwriting-font');
+  if (!link) return Promise.resolve(false);
+  if (link.sheet) return Promise.resolve(true);
+  return new Promise((resolve) => {
+    link.addEventListener('load', () => resolve(Boolean(link.sheet)), { once: true });
+    link.addEventListener('error', () => resolve(false), { once: true });
+  });
+}
+
+function enableHandwriting(note: HTMLElement, text: string): void {
+  if (typeof document.fonts?.load !== 'function') return;
+  void waitForHandwritingStylesheet().then(async (ready) => {
+    if (!ready) return;
+    try {
+      const faces = await document.fonts.load(`1.2rem "${HANDWRITING_FONT}"`, text);
+      if (faces.length > 0 && note.isConnected) note.classList.add('handwriting-ready');
+    } catch {
+      // Keep the readable fallback stack when the font cannot be fetched.
+    }
+  });
+}
+
 function renderPhotoDay(
   options: DayRenderOptions,
   entry: Manifest['entries'][number],
@@ -62,26 +87,20 @@ function renderPhotoDay(
     decoding: 'async',
     fetchpriority: 'high',
   });
-  const print = h('figure', { class: 'photo-paper' }, [
-    image,
-    h('span', { class: 'photo-paper-mark', 'aria-hidden': 'true' }, [
-      `${formatChineseDate(date)} · 照片日历`,
-    ]),
-  ]);
-  const stage = h('div', { class: 'day-photo-stage' }, [print]);
-
-  const copyChildren: Array<Node | string> = [
+  const note = h('figcaption', { class: 'photo-paper-note' }, [
     h('p', { class: 'day-eyebrow' }, ['一天一张 · 有照片的日子']),
     h('h1', { class: 'day-date', id: 'day-heading' }, [
       h('time', { datetime: date }, [formatChineseDate(date)]),
     ]),
     h('p', { class: 'day-weekday' }, [weekdayName(date)]),
     h('p', { class: 'day-caption', id: captionId }, [entry.caption]),
-  ];
-  if (noticeNode) copyChildren.unshift(noticeNode);
-  const copy = h('div', { class: 'day-copy paper-copy' }, copyChildren);
+  ]);
+  const print = h('figure', { class: 'photo-paper' }, [image, note]);
+  const stage = h('div', { class: 'day-photo-stage' }, [print]);
+  enableHandwriting(note, entry.caption);
 
-  element.append(stage, copy, navFor(date));
+  if (noticeNode) element.append(noticeNode);
+  element.append(stage, navFor(date));
 
   image.addEventListener('error', () => {
     const fallback = renderDay({
