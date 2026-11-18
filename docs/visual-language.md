@@ -33,9 +33,10 @@
 
 ### 展示性结构
 
-- 月历：有照片时 `.day-cell` 内是 `span.day-print`，包含 `.day-thumb` 与 `.day-cell-caption`；无照片日期不生成 `day-print`，只保留日期章和空白纸面。照片加载失败也移除 `day-print`。所有日期行使用固定等高轨道（桌面 118px、移动端 64px）。
+- 月历：有照片时 `.day-cell` 内是 `span.day-print`，包含 `.day-thumb` 与 `.day-cell-caption`；无照片日期不生成 `day-print`，只保留日期章和空白纸面。照片加载失败也移除 `day-print`。所有日期行使用同一 `1fr` 轨道，桌面最小 78px、移动端最小 56px，随视口高度伸缩。
 - 单日：`.photo-paper` 包住 `.day-photo` 与 `figcaption.photo-paper-note`；白边内依次是眉标、日期、星期与 `.day-caption` 手写文案。相纸宽度随照片收缩（`width: fit-content` + 白边 `contain: inline-size`，420–920px 上下限），白边由内容撑高；无照片使用 `.postcard-paper`。
 - 手写字体只在 `day.html` 引入（洪蕾行书按 `unicode-range` 分片，CDN 固定版本）。文案先以系统楷体/衬线回退渲染，`document.fonts.load()` 成功后才激活 `.photo-paper-note.handwriting-ready`；加载失败时保持回退字体。日期与星期始终使用印刷字体。
+- 视口适配：月历页使用 `100dvh` 纵向 flex，页头/页脚固定，日期网格填充剩余高度；桌面保留紧凑页脚，`max-height: 760px` 下隐藏装饰页脚。单日页照片上限桌面 `min(52vh, 720px)`、移动端 `min(38vh, 360px)`，常规文案在 1440×900、375×667、320×667 下不滚动页面；120 字文案允许纵向滚动，但不裁切内容、不产生横向滚动。
 - 装饰（胶带、纸边、阴影、日期章、手绘下划线）由 CSS 渐变/伪元素实现；不进入可访问树、`pointer-events: none`。
 - 移动端取消相纸旋转；320px 起日期格仍保持至少 44×44。
 

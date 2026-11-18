@@ -250,3 +250,46 @@ test.describe('day view', () => {
     await expect(page.locator('.photo-paper-note .day-caption')).toBeVisible();
   });
 });
+
+test.describe('viewport fit', () => {
+  test('keeps month and day pages within the viewport at target sizes', async ({ page }) => {
+    await withManifest(page);
+    const viewports = [
+      { width: 1440, height: 900 },
+      { width: 375, height: 667 },
+      { width: 320, height: 667 },
+    ];
+    for (const viewport of viewports) {
+      await page.setViewportSize(viewport);
+      for (const path of ['index.html?month=2026-11', 'day.html?date=2026-11-08']) {
+        await page.goto(path);
+        if (path.startsWith('day')) {
+          await page
+            .locator('.photo-paper-note.handwriting-ready')
+            .waitFor({ timeout: 4000 })
+            .catch(() => undefined);
+          await page.evaluate(() => document.fonts.ready.then(() => true));
+        }
+        const metrics = await page.evaluate(() => {
+          const cells = Array.from(document.querySelectorAll('a.day-cell')).map(
+            (cell) => cell.getBoundingClientRect().height,
+          );
+          return {
+            scrollHeight: document.documentElement.scrollHeight,
+            scrollWidth: document.documentElement.scrollWidth,
+            innerHeight: window.innerHeight,
+            innerWidth: window.innerWidth,
+            cellCount: cells.length,
+            minCellHeight: cells.length > 0 ? Math.min(...cells) : 0,
+          };
+        });
+        expect(metrics.scrollHeight).toBeLessThanOrEqual(metrics.innerHeight + 1);
+        expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.innerWidth);
+        if (path.startsWith('index')) {
+          expect(metrics.cellCount).toBe(30);
+          expect(metrics.minCellHeight).toBeGreaterThanOrEqual(44);
+        }
+      }
+    }
+  });
+});

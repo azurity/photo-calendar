@@ -179,14 +179,58 @@ a {
   padding: 12px 0 56px;
 }
 
+.month-page {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  flex-direction: column;
+}
+
+.month-page .site-header,
+.month-page .site-footer {
+  flex: none;
+}
+
+.month-page .page-main {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+
+.month-page #app {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.month-page #app > .notice {
+  flex: none;
+}
+
+.month-view {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
 .site-footer {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 24px 0 36px;
+  padding: 16px 0 20px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.78rem;
   letter-spacing: 0.08em;
+}
+
+@media (max-height: 760px) {
+  .site-footer {
+    display: none;
+  }
 }
 
 .loading {
@@ -262,6 +306,10 @@ a {
 
 .month-grid-wrap {
   position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
@@ -280,6 +328,7 @@ a {
 .weekday-row {
   position: relative;
   z-index: 1;
+  flex: none;
   border-bottom: 1px solid var(--line);
 }
 
@@ -295,7 +344,9 @@ a {
 .month-grid {
   position: relative;
   z-index: 1;
-  grid-auto-rows: 118px;
+  min-height: 0;
+  flex: 1;
+  grid-auto-rows: minmax(78px, 1fr);
   background: var(--line);
 }
 
@@ -303,7 +354,7 @@ a {
   position: relative;
   display: flex;
   min-width: 0;
-  min-height: 118px;
+  min-height: 0;
   height: 100%;
   flex-direction: column;
   gap: 5px;
@@ -479,14 +530,26 @@ a.day-cell:hover .day-print {
 }
 
 .day-main {
+  display: flex;
   width: 100%;
-  padding: 0 0 48px;
+  min-height: calc(100vh - 78px);
+  min-height: calc(100dvh - 78px);
+  flex-direction: column;
+  padding: 0;
+}
+
+.day-page #app {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
 }
 
 .day-view {
   position: relative;
   display: flex;
-  min-height: calc(100vh - 86px);
+  min-height: 0;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -500,7 +563,7 @@ a.day-cell:hover .day-print {
   display: grid;
   flex: 1;
   min-height: 56vh;
-  padding: 26px 16px 0;
+  padding: 20px 16px 0;
   place-items: center;
   background:
     radial-gradient(circle at 50% 38%, rgba(255, 250, 241, 0.08), transparent 38rem), var(--stage);
@@ -578,7 +641,7 @@ a.day-cell:hover .day-print {
   display: block;
   width: auto;
   max-width: 100%;
-  max-height: min(64vh, 820px);
+  max-height: min(52vh, 720px);
   margin: 0 auto;
   border-radius: 1px;
   background: var(--stage-deep);
@@ -666,7 +729,7 @@ a.day-cell:hover .day-print {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 10px;
-  margin: 22px auto 0;
+  margin: 14px auto 24px;
 }
 
 .day-nav-link {
@@ -830,7 +893,7 @@ a.day-cell:hover .day-print {
   }
 
   .month-grid {
-    grid-auto-rows: 64px;
+    grid-auto-rows: minmax(56px, 1fr);
   }
 
   .weekday {
@@ -839,7 +902,7 @@ a.day-cell:hover .day-print {
   }
 
   .day-cell {
-    min-height: 64px;
+    min-height: 0;
     height: 100%;
     gap: 2px;
     padding: 4px 3px 5px;
@@ -885,13 +948,19 @@ a.day-cell:hover .day-print {
     padding-top: 14px;
   }
 
+  .day-main {
+    min-height: calc(100vh - 68px);
+    min-height: calc(100dvh - 68px);
+    padding: 0;
+  }
+
   .day-view {
-    min-height: calc(100vh - 72px);
+    min-height: 0;
   }
 
   .day-photo-stage {
     min-height: 48vh;
-    padding: 16px 10px 0;
+    padding: 12px 10px 0;
   }
 
   .photo-paper {
@@ -907,7 +976,7 @@ a.day-cell:hover .day-print {
   }
 
   .day-photo {
-    max-height: min(44vh, 420px);
+    max-height: min(38vh, 360px);
   }
 
   .photo-paper-note {
@@ -935,6 +1004,7 @@ a.day-cell:hover .day-print {
   .day-navigation {
     width: calc(100% - 28px);
     justify-content: center;
+    margin: 12px auto 20px;
   }
 
   .fallback-view {
@@ -988,7 +1058,7 @@ a.day-cell:hover .day-print {
   }
 
   .day-photo {
-    max-height: 40vh;
+    max-height: min(36vh, 320px);
   }
 
   .photo-paper-note {

@@ -47,3 +47,23 @@ Web（1440×1000，Chrome）：
 - 洪蕾行书激活后呈现手写/马克笔字迹；字体加载成功前与 CDN 阻断时使用系统楷体/衬线回退，文案始终可见。
 - 320、375、1440px 下均无横向滚动；120 字文案在桌面与移动端正常换行、不裁切。
 - 浅色/深色下墨色与相纸纸边对比度满足 WCAG AA；`pnpm --filter @photo-calendar/web test:e2e`（29 个测试）与 `test:a11y`（6 个测试）通过。
+
+## 2026-11-19 视口适配
+
+对应 `fit-web-pages-to-viewport` 的人工视觉检查。Web（Chrome；1440×900 与 375×667）：
+
+- `artifacts/visual/month-fit-1440-light.png`
+- `artifacts/visual/month-fit-1440-dark.png`
+- `artifacts/visual/month-fit-375-light.png`
+- `artifacts/visual/month-fit-375-dark.png`
+- `artifacts/visual/day-fit-1440-light.png`
+- `artifacts/visual/day-fit-1440-dark.png`
+- `artifacts/visual/day-fit-375-light.png`
+- `artifacts/visual/day-fit-375-dark.png`
+
+## 结果
+
+- 月历 2026-11（6 行）在 1440×900 无纵向滚动，日期格高约 92px；375×667 下隐藏装饰页脚，日期格高约 65px，均不小于 44×44。
+- 有照片的单日页在 1440×900、375×667 与 320×667 下常规文案均无纵向/横向滚动；照片仍是主体，相纸白边与手写文案未被压扁或裁切。
+- 120 字文案允许纵向滚动（桌面约 195px，移动端约 5–8px），不裁切文字与照片，也不产生横向滚动。
+- `pnpm check:web`（类型检查、单元测试、构建、30 个 E2E）与 `pnpm test:a11y`（6 个场景）通过。
