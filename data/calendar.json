@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-17T15:02:37Z",
+  "updatedAt": "2026-11-18T16:06:05Z",
   "entries": [
     {
       "date": "2026-11-15",
@@ -14,6 +14,97 @@
       "capturedAt": "2026-11-15T15:08:40+08:00",
       "createdAt": "2026-11-17T15:02:25Z",
       "updatedAt": "2026-11-17T15:02:25Z"
+    },
+    {
+      "date": "2026-10-25",
+      "photo": "data/photos/2026-10-25-263bf0ed.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-25-263bf0ed.webp",
+      "caption": "落日正从远处楼群的肩头沉下，把一条金色的光路铺在水面上——沿着它走一段，世界总会在某个傍晚还你惊喜。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T15:44:55Z",
+      "capturedAt": "2026-10-25T17:07:08+08:00",
+      "createdAt": "2026-11-18T15:44:55Z",
+      "updatedAt": "2026-11-18T15:44:55Z"
+    },
+    {
+      "date": "2026-10-11",
+      "photo": "data/photos/2026-10-11-2d840638.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-11-2d840638.webp",
+      "caption": "树梢之上那根亮黄色的烟囱像一枚指向天空的路标，趁十月天光还暖，出门走走，说不定下一个转角就有值得抬头的东西。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T15:47:21Z",
+      "capturedAt": "2026-10-11T16:23:44+08:00",
+      "createdAt": "2026-11-18T15:47:21Z",
+      "updatedAt": "2026-11-18T15:47:21Z"
+    },
+    {
+      "date": "2026-10-06",
+      "photo": "data/photos/2026-10-06-56040092.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-06-56040092.webp",
+      "caption": "灰瓦上的小脊兽仰着头，把一整片蓝得发亮的天守成自己的风景；挑个晴日出门走走吧，屋檐之外还有更辽阔的世界等你去认领。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T15:49:47Z",
+      "capturedAt": "2026-10-06T16:00:35+08:00",
+      "createdAt": "2026-11-18T15:49:47Z",
+      "updatedAt": "2026-11-18T15:49:47Z"
+    },
+    {
+      "date": "2026-10-05",
+      "photo": "data/photos/2026-10-05-b30e2f61.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-05-b30e2f61.webp",
+      "caption": "世界住房日这天，看那九曲盘山路绕过苍翠石峰、滑向谷底，才懂得“家”不只是屋檐——沿着弯道去走一走，门外的世界正等你推门。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T15:56:50Z",
+      "capturedAt": "2026-10-05T17:16:18+08:00",
+      "createdAt": "2026-11-18T15:56:50Z",
+      "updatedAt": "2026-11-18T15:56:50Z"
+    },
+    {
+      "date": "2026-10-04",
+      "photo": "data/photos/2026-10-04-d90bd4bd.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-04-d90bd4bd.webp",
+      "caption": "细长的白色悬索桥横跨在苍翠山谷与裸露岩壁之间，像一条邀人走向群山深处的线，这个十月不妨迈开脚步，去看看世界铺展在脚下的辽阔。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T16:00:27Z",
+      "capturedAt": "2026-10-04T12:13:03+08:00",
+      "createdAt": "2026-11-18T16:00:27Z",
+      "updatedAt": "2026-11-18T16:00:27Z"
+    },
+    {
+      "date": "2026-10-03",
+      "photo": "data/photos/2026-10-03-e1a3e996.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-03-e1a3e996.webp",
+      "caption": "清溪漫过青苔斑驳的石头，把十月的光影揉碎在水花里，不如循着这汩汩声往山里走，看看世界正悄悄绿成什么模样。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T16:01:46Z",
+      "capturedAt": "2026-10-03T14:29:14+08:00",
+      "createdAt": "2026-11-18T16:01:46Z",
+      "updatedAt": "2026-11-18T16:01:46Z"
+    },
+    {
+      "date": "2026-10-02",
+      "photo": "data/photos/2026-10-02-f2a4189b.webp",
+      "thumbnail": "data/photos/thumbs/2026-10-02-f2a4189b.webp",
+      "caption": "雾把一根根石峰藏起一半，像一本没读完的书；剩下那一半，等你亲自去山间翻开。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-18T16:06:05Z",
+      "capturedAt": "2026-10-02T14:49:51+08:00",
+      "createdAt": "2026-11-18T16:06:05Z",
+      "updatedAt": "2026-11-18T16:06:05Z"
     }
   ]
 }
