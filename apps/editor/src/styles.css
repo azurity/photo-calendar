@@ -182,11 +182,14 @@ h2,
   border-bottom: 1px solid rgba(242, 232, 218, 0.14);
 }
 
-.brand-dot {
-  width: 28px;
+.brand-mark {
+  width: 18px;
   height: 18px;
-  border-radius: 2px;
-  background: url('./assets/film-mark.svg') center / contain no-repeat;
+  flex: none;
+  border: 2px solid var(--accent);
+  border-radius: 50% 50% 50% 4px;
+  background: radial-gradient(circle at 35% 35%, var(--accent-soft), transparent 60%);
+  transform: rotate(-12deg);
 }
 
 .brand-block strong {

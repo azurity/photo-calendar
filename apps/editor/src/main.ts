@@ -62,7 +62,7 @@ function renderShell(): HTMLElement {
   const shell = h('div', { class: 'app-shell film-shell' });
   const sidebar = h('aside', { class: 'sidebar film-canister' });
   const brand = h('div', { class: 'brand-block' }, [
-    h('span', { class: 'brand-dot', 'aria-hidden': 'true' }),
+    h('span', { class: 'brand-mark', 'aria-hidden': 'true' }),
     h('div', {}, [h('strong', {}, ['照片日历']), h('span', { class: 'brand-sub' }, ['编辑器'])]),
   ]);
   sidebar.append(brand);
@@ -278,14 +278,14 @@ function renderPhotoCard(item: EntryView, index: number): HTMLElement {
   if (!item.thumbnailDataUrl) image.classList.add('image-missing');
   card.append(
     // createFilmEdge('horizontal', 'film-edge-top'),
-    h('div', { class: 'film-edge' }),
+    h('div', { class: 'film-edge', 'aria-hidden': 'true' }),
     h('span', { class: 'photo-frame-number', 'aria-hidden': 'true' }, [
       `FRAME ${String(index + 1).padStart(2, '0')}`,
     ]),
     image,
     h('span', { class: 'photo-card-date' }, [dateLabel(item.entry.date)]),
     // createFilmEdge('horizontal', 'film-edge-bottom'),
-    h('div', { class: 'film-edge' }),
+    h('div', { class: 'film-edge', 'aria-hidden': 'true' }),
     // h('span', { class: 'photo-card-caption' }, [item.entry.caption]),
   );
   card.addEventListener('click', () => {

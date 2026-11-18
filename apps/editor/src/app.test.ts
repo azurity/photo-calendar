@@ -194,6 +194,10 @@ afterEach(() => {
 describe('editor app', () => {
   it('boots and navigates gallery, import, settings and detail views', async () => {
     await boot();
+    const brandMark = document.querySelector('.brand-block .brand-mark');
+    expect(brandMark).not.toBeNull();
+    expect(brandMark?.getAttribute('aria-hidden')).toBe('true');
+    expect(document.querySelector('.brand-dot')).toBeNull();
     expect(document.body.textContent).toContain('全部照片');
     expect(document.body.textContent).toContain('添加照片');
     expect(document.body.textContent).toContain('设置');
@@ -267,7 +271,10 @@ describe('editor app', () => {
     change(month!);
     await flush();
     expect(document.querySelectorAll('.photo-card')).toHaveLength(1);
-    expect(document.body.textContent).toContain('十月的第一阵风');
+    // Gallery cards intentionally show only date/frame; captions live in the detail view.
+    const card = document.querySelector('.photo-card');
+    expect(card?.textContent).toContain('2026 年 10 月 1 日');
+    expect(card?.textContent).not.toContain('十月的第一阵风');
   });
 
   it('shows empty state when there are no entries', async () => {
