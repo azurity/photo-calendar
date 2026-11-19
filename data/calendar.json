@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-19T14:50:27Z",
+  "updatedAt": "2026-11-19T14:59:41Z",
   "entries": [
     {
       "date": "2026-11-15",
@@ -131,6 +131,71 @@
       "capturedAt": "2026-08-16T16:16:43+08:00",
       "createdAt": "2026-11-19T14:50:27Z",
       "updatedAt": "2026-11-19T14:50:27Z"
+    },
+    {
+      "date": "2026-09-25",
+      "photo": "data/photos/2026-09-25-33a85578.webp",
+      "thumbnail": "data/photos/thumbs/2026-09-25-33a85578.webp",
+      "caption": "中秋的斜阳把高架桥的混凝土柱染成暖金色，栏杆上“品芳桥”三个红字静静守着车流；沿着桥下那条被光影切开的路走出去，也许就能遇见属于你的月亮。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:52:18Z",
+      "capturedAt": "2026-09-25T17:16:15+08:00",
+      "createdAt": "2026-11-19T14:52:18Z",
+      "updatedAt": "2026-11-19T14:52:18Z"
+    },
+    {
+      "date": "2026-08-23",
+      "photo": "data/photos/2026-08-23-33ca8dde.webp",
+      "thumbnail": "data/photos/thumbs/2026-08-23-33ca8dde.webp",
+      "caption": "处暑这天，天色还亮着，半个月亮已悄悄挂上淡蓝的穹顶，云被余晖染出橘粉的边——趁暑气收尾，出门走走吧，抬头就能撞见这样安静的好天气。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:54:17Z",
+      "capturedAt": "2026-08-23T18:19:15+08:00",
+      "createdAt": "2026-11-19T14:54:17Z",
+      "updatedAt": "2026-11-19T14:54:17Z"
+    },
+    {
+      "date": "2026-09-19",
+      "photo": "data/photos/2026-09-19-5717b998.webp",
+      "thumbnail": "data/photos/thumbs/2026-09-19-5717b998.webp",
+      "caption": "看那只黑水鸡顶着一点红额，在绿水上划出细细的涟漪——寻常日子的安稳，原来也是需要守护的风景，不如出门去水边走走，把这份安宁看进眼里。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:56:54Z",
+      "capturedAt": "2026-09-19T15:58:05+08:00",
+      "createdAt": "2026-11-19T14:56:54Z",
+      "updatedAt": "2026-11-19T14:56:54Z"
+    },
+    {
+      "date": "2026-08-02",
+      "photo": "data/photos/2026-08-02-fcbb6ce5.webp",
+      "thumbnail": "data/photos/thumbs/2026-08-02-fcbb6ce5.webp",
+      "caption": "树干下半截刷着白灰，夕阳正从叶隙间漏成一小捧碎金——往里走几步，光就会落在你肩上。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:58:54Z",
+      "capturedAt": "2026-08-02T18:28:22+08:00",
+      "createdAt": "2026-11-19T14:58:54Z",
+      "updatedAt": "2026-11-19T14:58:54Z"
+    },
+    {
+      "date": "2026-06-06",
+      "photo": "data/photos/2026-06-06-16f42170.webp",
+      "thumbnail": "data/photos/thumbs/2026-06-06-16f42170.webp",
+      "caption": "垂枝半掩的码头边，红色救生圈静静挂在水泥柱前，湖面闪着碎光——世界总在某个拐角，等你走近才肯亮起来。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:59:41Z",
+      "capturedAt": "2026-06-06T17:35:34+08:00",
+      "createdAt": "2026-11-19T14:59:41Z",
+      "updatedAt": "2026-11-19T14:59:41Z"
     }
   ]
 }
