@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-18T16:06:05Z",
+  "updatedAt": "2026-11-19T14:46:14Z",
   "entries": [
     {
       "date": "2026-11-15",
@@ -105,6 +105,19 @@
       "capturedAt": "2026-10-02T14:49:51+08:00",
       "createdAt": "2026-11-18T16:06:05Z",
       "updatedAt": "2026-11-18T16:06:05Z"
+    },
+    {
+      "date": "2026-09-26",
+      "photo": "data/photos/2026-09-26-c3ec4bed.webp",
+      "thumbnail": "data/photos/thumbs/2026-09-26-c3ec4bed.webp",
+      "caption": "隔着一湖微皱的碧水望去，飞檐下的轩窗已亮起暖灯，树影与石岸都安静下来——挑个这样微阴的午后出门走走吧，对岸的风景正等着你过桥去看。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:46:14Z",
+      "capturedAt": "2026-09-26T16:41:15+08:00",
+      "createdAt": "2026-11-19T14:46:14Z",
+      "updatedAt": "2026-11-19T14:46:14Z"
     }
   ]
 }
