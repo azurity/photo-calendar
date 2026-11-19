@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-19T14:46:14Z",
+  "updatedAt": "2026-11-19T14:50:27Z",
   "entries": [
     {
       "date": "2026-11-15",
@@ -118,6 +118,19 @@
       "capturedAt": "2026-09-26T16:41:15+08:00",
       "createdAt": "2026-11-19T14:46:14Z",
       "updatedAt": "2026-11-19T14:46:14Z"
+    },
+    {
+      "date": "2026-08-16",
+      "photo": "data/photos/2026-08-16-ab9c56ed.webp",
+      "thumbnail": "data/photos/thumbs/2026-08-16-ab9c56ed.webp",
+      "caption": "青瓦檐角垂着一枚铜铃，风过时它便替古寺低语；循着这一声清响走进夏末的绿荫里，世界总有檐下的小惊喜等你抬头。",
+      "captionSource": "generated",
+      "captionModel": "deepseek-flash",
+      "captionPromptVersion": 1,
+      "captionUpdatedAt": "2026-11-19T14:50:27Z",
+      "capturedAt": "2026-08-16T16:16:43+08:00",
+      "createdAt": "2026-11-19T14:50:27Z",
+      "updatedAt": "2026-11-19T14:50:27Z"
     }
   ]
 }
